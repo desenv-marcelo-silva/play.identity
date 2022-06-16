@@ -1,2 +1,3 @@
 src/Play.Identity.Service/obj
 src/Play.Identity.Service/bin
+src/Play.Identity.Service/tempkey.jwk
