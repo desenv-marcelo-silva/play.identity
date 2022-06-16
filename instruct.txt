@@ -6,3 +6,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Design --version 5.0.15
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.15
 
 dotnet aspnet-codegenerator identity --files "Account.Register"
+
+===
+dotnet add package AspNetCore.Identity.MongoDbCore --version 3.1.1
+dotnet add package Play.Common
