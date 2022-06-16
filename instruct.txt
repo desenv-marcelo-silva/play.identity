@@ -10,3 +10,128 @@ dotnet aspnet-codegenerator identity --files "Account.Register"
 ===
 dotnet add package AspNetCore.Identity.MongoDbCore --version 3.1.1
 dotnet add package Play.Common
+
+==
+dotnet add package IdentityServer4 --version 4.1.2
+dotnet add package IdentityServer4.AspNetIdentity --version 4.1.2
+
+To view configuration for openId:
+https://localhost:5003/.well-known/openid-configuration
+the results are:
+{
+    "issuer": "https://localhost:5003",
+    "authorization_endpoint": "https://localhost:5003/connect/authorize",
+    "token_endpoint": "https://localhost:5003/connect/token",
+    "userinfo_endpoint": "https://localhost:5003/connect/userinfo",
+    "end_session_endpoint": "https://localhost:5003/connect/endsession",
+    "check_session_iframe": "https://localhost:5003/connect/checksession",
+    "revocation_endpoint": "https://localhost:5003/connect/revocation",
+    "introspection_endpoint": "https://localhost:5003/connect/introspect",
+    "device_authorization_endpoint": "https://localhost:5003/connect/deviceauthorization",
+    "frontchannel_logout_supported": true,
+    "frontchannel_logout_session_supported": true,
+    "backchannel_logout_supported": true,
+    "backchannel_logout_session_supported": true,
+    "scopes_supported": [
+        "offline_access"
+    ],
+    "claims_supported": [],
+    "grant_types_supported": [
+        "authorization_code",
+        "client_credentials",
+        "refresh_token",
+        "implicit",
+        "urn:ietf:params:oauth:grant-type:device_code"
+    ],
+    "response_types_supported": [
+        "code",
+        "token",
+        "id_token",
+        "id_token token",
+        "code id_token",
+        "code token",
+        "code id_token token"
+    ],
+    "response_modes_supported": [
+        "form_post",
+        "query",
+        "fragment"
+    ],
+    "token_endpoint_auth_methods_supported": [
+        "client_secret_basic",
+        "client_secret_post"
+    ],
+    "subject_types_supported": [
+        "public"
+    ],
+    "code_challenge_methods_supported": [
+        "plain",
+        "S256"
+    ],
+    "request_parameter_supported": true
+}
+
+====== AFTER CONFIGURE OPEN ID RESOURCES ======
+try again: 
+https://localhost:5003/.well-known/openid-configuration
+
+{
+    "issuer": "https://localhost:5003",
+    "jwks_uri": "https://localhost:5003/.well-known/openid-configuration/jwks",
+    "authorization_endpoint": "https://localhost:5003/connect/authorize",
+    "token_endpoint": "https://localhost:5003/connect/token",
+    "userinfo_endpoint": "https://localhost:5003/connect/userinfo",
+    "end_session_endpoint": "https://localhost:5003/connect/endsession",
+    "check_session_iframe": "https://localhost:5003/connect/checksession",
+    "revocation_endpoint": "https://localhost:5003/connect/revocation",
+    "introspection_endpoint": "https://localhost:5003/connect/introspect",
+    "device_authorization_endpoint": "https://localhost:5003/connect/deviceauthorization",
+    "frontchannel_logout_supported": true,
+    "frontchannel_logout_session_supported": true,
+    "backchannel_logout_supported": true,
+    "backchannel_logout_session_supported": true,
+    "scopes_supported": [
+        "openid",   <<<<<<<<<======== this was added
+        "offline_access"
+    ],
+    "claims_supported": [   <<<<<<<===== this was added
+        "sub"
+    ],
+    "grant_types_supported": [
+        "authorization_code",
+        "client_credentials",
+        "refresh_token",
+        "implicit",
+        "password",
+        "urn:ietf:params:oauth:grant-type:device_code"
+    ],
+    "response_types_supported": [
+        "code",
+        "token",
+        "id_token",
+        "id_token token",
+        "code id_token",
+        "code token",
+        "code id_token token"
+    ],
+    "response_modes_supported": [
+        "form_post",
+        "query",
+        "fragment"
+    ],
+    "token_endpoint_auth_methods_supported": [
+        "client_secret_basic",
+        "client_secret_post"
+    ],
+    "id_token_signing_alg_values_supported": [
+        "RS256"
+    ],
+    "subject_types_supported": [
+        "public"
+    ],
+    "code_challenge_methods_supported": [
+        "plain",
+        "S256"
+    ],
+    "request_parameter_supported": true
+}
