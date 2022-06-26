@@ -135,3 +135,16 @@ https://localhost:5003/.well-known/openid-configuration
     ],
     "request_parameter_supported": true
 }
+
+
+
+=============== TO USE SECRETS ===============
+Para inicializar o serviço. Vai gerar um id no projeto vinculado a um arquivo na área do usuário
+dotnet user-secrets init
+
+
+Para configurar algum valor secreto usando esse secret.
+dotnet user-secrets set "seção-do-config:nome-da-propriedade" "valor-da-propriedade".
+
+Exemplo:
+dotnet user-secrets set "IdentitySettings:AdminUserPassword" "alguma-senha-qualquer"
