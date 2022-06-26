@@ -8,11 +8,14 @@ using Microsoft.AspNetCore.Identity;
 
 using Play.Identity.Service.Entities;
 using Play.Identity.Service.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using static IdentityServer4.IdentityServerConstants;
 
 namespace Play.Identity.Service.Controllers
 {
     [ApiController]
     [Route("users")]
+    [Authorize(Policy = LocalApi.PolicyName)]
     public class UsersController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -38,7 +41,8 @@ namespace Play.Identity.Service.Controllers
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
 
-            if (user == null) {
+            if (user == null)
+            {
                 return NotFound();
             }
 
@@ -51,7 +55,8 @@ namespace Play.Identity.Service.Controllers
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
 
-            if (user == null) {
+            if (user == null)
+            {
                 return NotFound();
             }
 
@@ -70,7 +75,8 @@ namespace Play.Identity.Service.Controllers
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
 
-            if (user == null) {
+            if (user == null)
+            {
                 return NotFound();
             }
 
